@@ -9,7 +9,6 @@ for this case, I joined some functions I made and others to make a "big api styl
 
 This bundle includes new categories:
 
-- `love.collision` for some simple collisions
 - `love.ease` some easing functions, can be used for some cool animations
 - `love.mixer` add a custom audio mixer in love, for some advanced audio management
 - `love.system` add more functions to the base `love.system` table
