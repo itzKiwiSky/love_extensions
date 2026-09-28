@@ -19,6 +19,3 @@ This bundle includes new categories:
 
 to install and use this extension, simple clone the repo, move the folder inside your project.
 after this, just add the `require 'love_extension'` inside your script to properly load the library.
-
-## Credits 
-
