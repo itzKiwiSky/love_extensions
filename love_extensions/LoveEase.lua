@@ -1,3 +1,5 @@
+--- This module add very useful lerp functions with it respective effect
+--- is not deltatime
 love.ease = {}
 
 function love.ease.linear(t, b, c, d)
@@ -129,12 +131,12 @@ end
 
 function love.ease.inCirc(t, b, c, d)
     t = t / d
-    return(-c * (math.sqrt(1 - t * t) - 1) + b)
+    return (-c * (math.sqrt(1 - t * t) - 1) + b)
 end
 
 function love.ease.outCirc(t, b, c, d)
     t = t / d - 1
-    return(c * math.sqrt(1 - t * t) + b)
+    return (c * math.sqrt(1 - t * t) + b)
 end
 
 function love.ease.inOutCirc(t, b, c, d)

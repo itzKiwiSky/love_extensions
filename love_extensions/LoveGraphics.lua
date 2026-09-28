@@ -1,5 +1,17 @@
 local bit = require 'bit'
 
+---@alias love.AtlasAsset string|love.Texture
+
+---@---@alias love.QuadLoadMode
+---| "hash"
+---| "array"
+
+---@alias love.GradientDirection
+---| "vertical"
+---| "horizontal"
+
+---@alias love.ColorTable table<number>
+
 local function processQuadGroup(mode, image, sparrow)
     mode = mode or "array"
     local quads = {}
@@ -50,7 +62,7 @@ local function processQuadGroup(mode, image, sparrow)
 end
 
 ---Load a sprite sheet as image and the json map and returns the image and the quad as selected mode
----@param mode string
+---@param mode love.QuadLoadMode
 ---@param filename string
 ---@return love.Image
 ---@return table<love.Quad>
@@ -64,14 +76,10 @@ function love.graphics.newQuadFromImage(mode, filename)
     return image, quads
 end
 
----@alias QuadLoadMode
----| "hash"
----| "array"
-
 ---Get quads from filename
 ---@param image love.Drawable
 ---@param jsonData string
----@param mode QuadLoadMode
+---@param mode love.QuadLoadMode
 function love.graphics.getQuads(image, jsonData, mode)
     mode = mode or "array"
     local sparrow = json.decode(jsonData)
@@ -80,17 +88,13 @@ function love.graphics.getQuads(image, jsonData, mode)
     return quads
 end
 
----comment
----@param atlas string | love.Image
+---Get all quads by splitting a spritesheet
+---@param atlas love.AtlasAsset
 ---@param splitX number
 ---@param splitY number
----@return unknown
----@return table
+---@return love.Drawable, table<love.Quad>
 function love.graphics.getQuadsFromAtlas(atlas, splitX, splitY)
     local image
-
-    --atlas:typeOf("")
-    --print(atlas:type())
 
     if type(atlas) == "string" then
         image = love.graphics.newImage(atlas)
@@ -120,12 +124,6 @@ function love.graphics.getQuadsFromAtlas(atlas, splitX, splitY)
 
     return image, quads
 end
-
----@alias love.GradientDirection
----| "vertical"
----| "horizontal"
-
----@alias love.ColorTable table<number>
 
 ---Create a new gradient object
 ---@param dir love.GradientDirection
