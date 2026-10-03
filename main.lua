@@ -2,7 +2,8 @@ require 'love_extensions'
 
 function love.load()
     if love.arg.parseGameArguments(arg)[1] == "--test" then
-        lust = require 'tests.tools.Lust'
+        local fsutil = require 'libraries.FSUtil'
+        local lust = require 'tests.tools.Lust'
 
         local tests = fsutil.scanFolder("tests/specs")
 
