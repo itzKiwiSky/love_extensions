@@ -19,3 +19,19 @@ This bundle includes new categories:
 
 to install and use this extension, simple clone the repo, move the folder inside your project.
 after this, just add the `require 'love_extension'` inside your script to properly load the library.
+
+## Changes 
+---
+### 1.0
+
+First release 
+
+### 1.1
+
+- Added `love.save` module
+
+This modules add the possibility to create, manage and load save data without any external dependencies
+
+### API
+
+`love.save.newSaveSlot`

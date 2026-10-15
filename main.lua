@@ -1,6 +1,6 @@
 require 'love_extensions'
 
-function love.load()
+local function testArgs()
     if love.arg.parseGameArguments(arg)[1] == "--test" then
         local fsutil = require 'libraries.FSUtil'
         local lust = require 'tests.tools.Lust'
@@ -8,7 +8,6 @@ function love.load()
         local tests = fsutil.scanFolder("tests/specs")
 
         if #tests <= 0 then
-            --print("[love.Test] No tests to run")
             printf("[Love.Test] : No tests to run!")
             love.event.quit()
         end
@@ -22,6 +21,10 @@ function love.load()
 
         return
     end
+end
+
+function love.load()
+    testArgs()
 end
 
 function love.draw()

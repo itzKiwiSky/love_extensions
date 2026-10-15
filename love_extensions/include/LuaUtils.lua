@@ -22,7 +22,7 @@ function utils.deepmerge(target, source)
             if type(target[key]) ~= "table" then
                 target[key] = {}
             end
-            table.deepmerge(target[key], value)
+            utils.deepmerge(target[key], value)
         else
             target[key] = value
         end
@@ -128,7 +128,7 @@ local serialize_map = {
         local rtn = {}
         stk[t] = true
         for k, v in pairs(t) do
-            rtn[#rtn + 1] = "[" .. serialize(k, stk) .. "]=" .. serialize(v, stk)
+            rtn[#rtn + 1] = "[" .. utils.serialize(k, stk) .. "]=" .. utils.serialize(v, stk)
         end
         stk[t] = nil
         return "{" .. table.concat(rtn, ",") .. "}"
