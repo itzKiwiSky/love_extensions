@@ -14,7 +14,7 @@ This bundle includes new categories:
 - `love.system` add more functions to the base `love.system` table
 - `love.graphics` add more functions to the base `love.graphics` table
 - `love.math` add more functions to the base `love.math` table
-- `love.save` add save functions
+- `love.save` add save functions on the base `love` table
 
 ## usage
 
@@ -27,12 +27,22 @@ after this, just add the `require 'love_extension'` inside your script to proper
 
 First release 
 
+with:
+- `love.ease` 
+- `love.mixer` 
+- `love.system` 
+- `love.graphics`
+- `love.math` 
+
 ### 1.1
 
 - Added `love.save` module
+- Added tests for:
+    - `love.ease` 
+    - `love.mixer` 
+    - `love.system` 
+    - `love.graphics`
+    - `love.math` 
+    - `love.save`
 
 This modules add the possibility to create, manage and load save data without any external dependencies
-
-### API
-
-`love.save.newSaveSlot`
