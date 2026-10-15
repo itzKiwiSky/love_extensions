@@ -14,6 +14,7 @@ This bundle includes new categories:
 - `love.system` add more functions to the base `love.system` table
 - `love.graphics` add more functions to the base `love.graphics` table
 - `love.math` add more functions to the base `love.math` table
+- `love.save` add save functions
 
 ## usage
 
