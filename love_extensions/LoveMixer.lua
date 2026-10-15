@@ -292,12 +292,12 @@ function Mixer:setChannelPan(channelName, tag, pan)
     if not source then return end
 
     if source:getChannelCount() ~= 1 then
-        print("[Love.Mixer] : setChannelPan ignorado — source '%s' não é mono.", tag)
+        print("[Love.Mixer] : setChannelPan ignored — source '%s' is not mono.", tag)
         return
     end
 
     if not source:isRelative() then
-        printf("[Love.Mixer] : setChannelPan ignorado — source '%s' não tem setRelative(true).", tag)
+        print("[Love.Mixer] : setChannelPan ignored — source '%s' don't have setRelative(true).", tag)
         return
     end
 
