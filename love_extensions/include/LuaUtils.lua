@@ -114,12 +114,12 @@ local serialize_map = {
     ["string"] = function(v) return string.format("%q", v) end,
     ["number"] = function(v)
         if v ~= v then
-            return "0/0" --  nan
+            return "0/0"                           --  nan
         elseif v == 1 / 0 then
-            return "1/0" --  inf
+            return "1/0"                           --  inf
         elseif v == -1 / 0 then
             return "-1/0"
-        end -- -inf
+        end                                        -- -inf
         return tostring(v)
     end,
     ["table"] = function(t, stk)
@@ -128,7 +128,7 @@ local serialize_map = {
         local rtn = {}
         stk[t] = true
         for k, v in pairs(t) do
-            rtn[#rtn + 1] = "[" .. utils.serialize(k, stk) .. "]=" .. utils.serialize(v, stk)
+            rtn[#rtn + 1] = "[" .. serialize(k, stk) .. "]=" .. serialize(v, stk)
         end
         stk[t] = nil
         return "{" .. table.concat(rtn, ",") .. "}"
@@ -139,11 +139,12 @@ setmetatable(serialize_map, {
     __index = function(_, k) error("unsupported serialize type: " .. k) end
 })
 
----Serialize table
----@param x table
----@return string
-function utils.serialize(x)
+serialize = function(x, stk)
     return serialize_map[type(x)](x, stk)
+end
+
+function utils.serialize(x)
+    return serialize(x)
 end
 
 return utils
